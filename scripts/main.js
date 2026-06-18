@@ -11,7 +11,8 @@ import {
     getDailyChord,
     getScaleData,
     showLoader,
-    hideLoader
+    hideLoader,
+    searchMusic
 } from "./api.js";
 
 import {
@@ -269,51 +270,69 @@ async function handleChordSearch(
    SONG SEARCH
    ========================================== */
 
-async function handleSongSearch(
-    event
-) {
+async function handleSongSearch(event){
+
     event.preventDefault();
 
-    const title =
-        songInput.value.trim();
 
-    if (!title) {
-        return;
-    }
+    const input =
+        songInput.value.split("-");
+
+
+    const artist =
+        input[0].trim();
+
+
+    const title =
+        input[1].trim();
+
+
 
     try {
 
-        const result =
+
+        const lyrics =
             await searchSong(
-                "Coldplay",
+                artist,
                 title
             );
 
-        const songData = [
-            {
-                title,
-                artist:
-                    "Lyrics API",
-                lyrics:
-                    result?.lyrics ||
-                    "No lyrics available."
-            }
-        ];
+
+        const music =
+            await searchMusic(
+                artist,
+                title
+            );
+
 
         renderSongResults(
-            songData,
+            [
+                {
+                    title,
+                    artist,
+                    lyrics:
+                    lyrics.lyrics ||
+                    "No lyrics found.",
+                    album:
+                    music.results[0]
+                    ?.collectionName ||
+                    "Unknown",
+                    image:
+                    music.results[0]
+                    ?.artworkUrl100
+                }
+            ],
             songResults
         );
 
-    } catch (error) {
 
-        console.error(
-            error
-        );
-
-        songResults.innerHTML =
-            "<p>Error loading song.</p>";
     }
+    catch(error){
+
+        console.error(error);
+
+    }
+
 }
 
 /* ==========================================

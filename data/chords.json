@@ -31,7 +31,7 @@
 
     {
         "id": "d-minor",
-        "name": "D Minor",
+        "name": "Dm",
         "root": "D",
         "type": "minor",
         "difficulty": "beginner",
@@ -46,7 +46,7 @@
 
     {
         "id": "a-minor",
-        "name": "A Minor",
+        "name": "Am",
         "root": "A",
         "type": "minor",
         "difficulty": "beginner",

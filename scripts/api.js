@@ -14,7 +14,7 @@
 
 
 const LOCAL_CHORD_DATA =
-    "../data/chords.json";
+    "./data/chords.json";
 
 
 /**
@@ -52,43 +52,48 @@ async function requestJSON(url) {
  Uberchord API
 */
 
-const CHORD_API =
-"https://api.uberchord.com/v1/chords";
 
 
-export async function searchChord(
-    chordName
-){
+
+export async function searchChord(chordName){
 
     try {
 
-
-        const url =
-        `${CHORD_API}/${chordName}`;
-
-
-        const data =
-            await requestJSON(url);
+        const chords =
+            await requestJSON(
+                "./data/chords.json"
+            );
 
 
-        return normalizeChordData(
-            data
-        );
+        const results =
+            chords.filter(chord =>
+                chord.name
+                .toLowerCase()
+                .includes(
+                    chordName.toLowerCase()
+                )
+            );
 
+
+        if(results.length === 0){
+            throw new Error(
+                "Chord not found"
+            );
+        }
+
+
+        return results;
 
     }
     catch(error){
 
-
-        console.warn(
-            "Chord API unavailable. Using local JSON.",
+        console.error(
+            "Chord search failed:",
             error
         );
 
+        return [];
 
-        return loadLocalChords(
-            chordName
-        );
     }
 
 }
@@ -357,5 +362,34 @@ element
 element.classList.add(
 "hidden"
 );
+
+}
+const MUSIC_API =
+"https://itunes.apple.com/search";
+
+
+export async function searchMusic(
+    artist,
+    song
+){
+
+    const url =
+    `${SONG_API}/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`;
+
+
+    const response =
+        await fetch(url);
+
+
+    if(!response.ok){
+
+        throw new Error(
+            "Music API failed"
+        );
+
+    }
+
+
+    return await response.json();
 
 }
