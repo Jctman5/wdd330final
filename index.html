@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GuitarKit | Guitar Chords, Songs & Tuner</title>
+
+    <meta
+        name="description"
+        content="Search guitar chords, browse song chord progressions, build practice routines, and use an interactive guitar tuner."
+    >
+
+    <meta
+        name="keywords"
+        content="guitar chords, guitar tuner, guitar songs, chord finder, chord progression"
+    >
+
+    <meta name="author" content="Your Name">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JS -->
+    <script src="scripts/api.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/renderer.js" defer></script>
+    <script src="scripts/storage.js" defer></script>
+    <script src="scripts/tuner.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- HEADER -->
+    <!-- ========================= -->
+    <header class="header">
+        <div class="logo-container">
+            <span class="logo-icon">🎸</span>
+            <h1>GuitarKit</h1>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#search-section">Chord Search</a></li>
+                <li><a href="#song-section">Songs</a></li>
+                <li><a href="#tuner-section">Tuner</a></li>
+                <li><a href="#favorites-section">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========================= -->
+    <!-- HERO -->
+    <!-- ========================= -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <h2>Your All-In-One Guitar Toolkit</h2>
+
+            <p>
+                Search chords, explore songs, build progressions,
+                and practice smarter with GuitarKit.
+            </p>
+
+            <button id="dailyChallengeBtn" class="primary-btn">
+                Daily Chord Challenge
+            </button>
+
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- DAILY CHORD -->
+    <!-- ========================= -->
+    <section class="daily-chord-section">
+
+        <h2>Daily Chord</h2>
+
+        <div id="dailyChordCard" class="daily-card">
+            <p>Press the button above to load today's challenge.</p>
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- CHORD SEARCH -->
+    <!-- ========================= -->
+    <section id="search-section" class="section">
+
+        <h2>Chord Lookup</h2>
+
+        <form id="chordSearchForm" class="search-form">
+
+            <label for="chordInput">
+                Search Guitar Chord
+            </label>
+
+            <input
+                type="text"
+                id="chordInput"
+                name="chordInput"
+                placeholder="Example: Am, Dm7, Gmaj7"
+                aria-label="Search Guitar Chord"
+                required
+            >
+
+            <button type="submit" class="primary-btn">
+                Search
+            </button>
+
+        </form>
+
+        <div id="searchLoader" class="loader hidden"></div>
+
+        <div id="chordResults" class="card-grid"></div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- SONG SEARCH -->
+    <!-- ========================= -->
+    <section id="song-section" class="section">
+
+        <h2>Song Chord Search</h2>
+
+        <form id="songSearchForm" class="search-form">
+
+            <label for="songInput">
+                Search Song
+            </label>
+
+            <input
+                type="text"
+                id="songInput"
+                name="songInput"
+                placeholder="Wonderwall"
+                aria-label="Search Song"
+                required
+            >
+
+            <button type="submit" class="primary-btn">
+                Search Song
+            </button>
+
+        </form>
+
+        <div id="songResults" class="song-results"></div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- PROGRESSION BUILDER -->
+    <!-- ========================= -->
+    <section class="section">
+
+        <h2>Chord Progression Builder</h2>
+
+        <div class="progression-controls">
+
+            <input
+                type="text"
+                id="progressionInput"
+                placeholder="Enter chord"
+                aria-label="Chord Progression Input"
+            >
+
+            <button
+                id="addProgressionChordBtn"
+                class="secondary-btn"
+            >
+                Add Chord
+            </button>
+
+            <button
+                id="saveProgressionBtn"
+                class="primary-btn"
+            >
+                Save Progression
+            </button>
+
+        </div>
+
+        <div
+            id="progressionDisplay"
+            class="progression-display"
+        ></div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- KEY EXPLORER -->
+    <!-- ========================= -->
+    <section class="section">
+
+        <h2>Key & Scale Explorer</h2>
+
+        <div class="key-controls">
+
+            <select id="keySelect">
+                <option value="C">C</option>
+                <option value="G">G</option>
+                <option value="D">D</option>
+                <option value="A">A</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+            </select>
+
+            <select id="scaleSelect">
+                <option value="major">Major</option>
+                <option value="minor">Minor</option>
+                <option value="pentatonic">Pentatonic</option>
+                <option value="blues">Blues</option>
+            </select>
+
+            <button
+                id="generateScaleBtn"
+                class="primary-btn"
+            >
+                Generate
+            </button>
+
+        </div>
+
+        <div id="scaleResults"></div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- TUNER -->
+    <!-- ========================= -->
+    <section
+        id="tuner-section"
+        class="section"
+    >
+
+        <h2>Guitar Tuner</h2>
+
+        <div class="tuner-grid">
+
+            <button class="tuner-btn" data-frequency="82.41">
+                E
+            </button>
+
+            <button class="tuner-btn" data-frequency="110">
+                A
+            </button>
+
+            <button class="tuner-btn" data-frequency="146.83">
+                D
+            </button>
+
+            <button class="tuner-btn" data-frequency="196">
+                G
+            </button>
+
+            <button class="tuner-btn" data-frequency="246.94">
+                B
+            </button>
+
+            <button class="tuner-btn" data-frequency="329.63">
+                e
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FAVORITES -->
+    <!-- ========================= -->
+    <section
+        id="favorites-section"
+        class="section"
+    >
+
+        <h2>Your Favorites</h2>
+
+        <div id="favoritesContainer"
+             class="card-grid">
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- RECENT SEARCHES -->
+    <!-- ========================= -->
+    <section class="section">
+
+        <h2>Recent Searches</h2>
+
+        <div id="historyContainer"></div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FOOTER -->
+    <!-- ========================= -->
+    <footer>
+
+        <p>
+            GuitarKit © 2025
+        </p>
+
+        <p>
+            Built with HTML, CSS, JavaScript,
+            APIs, LocalStorage, and Web Audio API.
+        </p>
+
+    </footer>
+
+    <!-- ========================= -->
+    <!-- APP ENTRY POINT -->
+    <!-- ========================= -->
+    <script
+        type="module"
+        src="./js/main.js">
+    </script>
+
+</body>
+</html>
+```
