@@ -1,0 +1,526 @@
+/* ===================================
+   GUITARKIT STYLESHEET
+   Author: Your Name
+   =================================== */
+
+/* ==========================
+   CSS VARIABLES
+   ========================== */
+:root {
+    --dark-navy: #1A1A2E;
+    --deep-blue: #0F3460;
+    --guitar-red: #E94560;
+    --amber-gold: #F5A623;
+    --off-white: #E8E8E8;
+
+    --card-radius: 14px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+
+/* ==========================
+   RESET
+   ========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--dark-navy);
+    color: var(--off-white);
+    font-family: Georgia, serif;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* ==========================
+   TYPOGRAPHY
+   ========================== */
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: var(--amber-gold);
+}
+
+p {
+    margin-bottom: 0.75rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--off-white);
+}
+
+/* ==========================
+   HEADER
+   ========================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--deep-blue);
+
+    padding: 1rem 2rem;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow: var(--shadow);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    transition: var(--transition);
+}
+
+.main-nav a:hover {
+    color: var(--guitar-red);
+}
+
+/* ==========================
+   HERO
+   ========================== */
+
+.hero {
+    min-height: 60vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 2rem;
+
+    background:
+        linear-gradient(
+            rgba(26, 26, 46, 0.7),
+            rgba(15, 52, 96, 0.9)
+        );
+
+    animation: fadeIn 1s ease;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+}
+
+.hero-content p {
+    margin: 1rem 0 2rem;
+}
+
+/* ==========================
+   BUTTONS
+   ========================== */
+
+.primary-btn,
+.secondary-btn,
+.tuner-btn {
+    border: none;
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    padding: 0.8rem 1.2rem;
+
+    transition: var(--transition);
+
+    font-weight: bold;
+}
+
+.primary-btn {
+    background: var(--guitar-red);
+    color: white;
+}
+
+.secondary-btn {
+    background: var(--amber-gold);
+    color: black;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 15px rgba(233, 69, 96, 0.7);
+}
+
+/* ==========================
+   SECTIONS
+   ========================== */
+
+.section {
+    padding: 3rem 2rem;
+}
+
+/* ==========================
+   FORMS
+   ========================== */
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+input,
+select {
+    padding: 0.8rem;
+
+    border-radius: 8px;
+
+    border: none;
+
+    min-width: 220px;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--guitar-red);
+}
+
+/* ==========================
+   CARD GRID
+   ========================== */
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px, 1fr)
+        );
+
+    gap: 1.5rem;
+}
+
+/* ==========================
+   CHORD CARD
+   ========================== */
+
+.chord-card {
+    background: var(--deep-blue);
+
+    border-radius: var(--card-radius);
+
+    padding: 1rem;
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+
+    animation: slideUp 0.4s ease;
+}
+
+.chord-card:hover {
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 0 20px rgba(233, 69, 96, 0.5);
+}
+
+.chord-name {
+    font-family: 'Roboto Mono', monospace;
+    color: var(--amber-gold);
+}
+
+/* ==========================
+   DAILY CHORD
+   ========================== */
+
+.daily-card {
+    background: var(--deep-blue);
+
+    padding: 2rem;
+
+    margin: 1rem 2rem;
+
+    border-radius: var(--card-radius);
+
+    text-align: center;
+
+    animation: pulseGlow 3s infinite;
+}
+
+/* ==========================
+   PROGRESSION BUILDER
+   ========================== */
+
+.progression-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    margin-bottom: 1.5rem;
+}
+
+.progression-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.progression-item {
+    background: var(--guitar-red);
+
+    padding: 1rem;
+
+    border-radius: 8px;
+
+    animation: popIn 0.3s ease;
+}
+
+/* ==========================
+   SCALE RESULTS
+   ========================== */
+
+#scaleResults {
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+/* ==========================
+   TUNER
+   ========================== */
+
+.tuner-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 1rem;
+}
+
+.tuner-btn {
+    background: var(--amber-gold);
+    color: black;
+}
+
+.tuner-btn:hover {
+    transform: scale(1.08);
+}
+
+/* ==========================
+   FAVORITES
+   ========================== */
+
+.favorite-btn {
+    background: transparent;
+    border: none;
+
+    color: var(--amber-gold);
+
+    cursor: pointer;
+
+    font-size: 1.5rem;
+
+    transition: var(--transition);
+}
+
+.favorite-btn:hover {
+    transform: rotate(360deg);
+}
+
+/* ==========================
+   SONG RESULTS
+   ========================== */
+
+.song-results {
+    display: grid;
+    gap: 1rem;
+}
+
+.song-card {
+    background: var(--deep-blue);
+
+    padding: 1rem;
+
+    border-radius: var(--card-radius);
+
+    animation: fadeIn 0.5s ease;
+}
+
+/* ==========================
+   LOADER
+   ========================== */
+
+.loader {
+    width: 50px;
+    height: 50px;
+
+    border: 6px solid rgba(255,255,255,.2);
+    border-top: 6px solid var(--guitar-red);
+
+    border-radius: 50%;
+
+    margin: 2rem auto;
+
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================
+   FOOTER
+   ========================== */
+
+footer {
+    background: var(--deep-blue);
+
+    text-align: center;
+
+    padding: 2rem;
+
+    margin-top: 2rem;
+}
+
+/* ==========================
+   ANIMATIONS
+   ========================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGlow {
+
+    0% {
+        box-shadow:
+            0 0 5px rgba(245,166,35,.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(245,166,35,.7);
+    }
+
+    100% {
+        box-shadow:
+            0 0 5px rgba(245,166,35,.2);
+    }
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes popIn {
+
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ==========================
+   RESPONSIVE
+   ========================== */
+
+@media (max-width: 900px) {
+
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tuner-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .tuner-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .section {
+        padding: 2rem 1rem;
+    }
+}
+

@@ -1,0 +1,61 @@
+[
+    {
+        "id": "c-major",
+        "name": "C Major",
+        "root": "C",
+        "type": "major",
+        "difficulty": "beginner",
+        "position": "open",
+        "frets": [0,3,2,0,1,0],
+        "fingers": [0,3,2,0,1,0],
+        "strings": ["E","A","D","G","B","E"],
+        "notes": ["C","E","G"],
+        "variation": "Open Position",
+        "rating": 4.8
+    },
+
+    {
+        "id": "g-major",
+        "name": "G Major",
+        "root": "G",
+        "type": "major",
+        "difficulty": "beginner",
+        "position": "open",
+        "frets": [3,2,0,0,0,3],
+        "fingers": [2,1,0,0,0,3],
+        "strings": ["E","A","D","G","B","E"],
+        "notes": ["G","B","D"],
+        "variation": "Open Position",
+        "rating": 4.9
+    },
+
+    {
+        "id": "d-minor",
+        "name": "D Minor",
+        "root": "D",
+        "type": "minor",
+        "difficulty": "beginner",
+        "position": "open",
+        "frets": [0,0,0,2,3,1],
+        "fingers": [0,0,0,2,3,1],
+        "strings": ["E","A","D","G","B","E"],
+        "notes": ["D","F","A"],
+        "variation": "Open Position",
+        "rating": 4.7
+    },
+
+    {
+        "id": "a-minor",
+        "name": "A Minor",
+        "root": "A",
+        "type": "minor",
+        "difficulty": "beginner",
+        "position": "open",
+        "frets": [0,0,2,2,1,0],
+        "fingers": [0,0,2,3,1,0],
+        "strings": ["E","A","D","G","B","E"],
+        "notes": ["A","C","E"],
+        "variation": "Open Position",
+        "rating": 4.9
+    }
+]
